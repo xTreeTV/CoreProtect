@@ -26,3 +26,12 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Build
         run: mvn -B verify
+        
+      - name: List files in target
+        run: ls -la target  # Adjust this path if needed
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: target/*.jar  # Update this path as needed
